@@ -1,0 +1,41 @@
+name: "Unit Testing"
+
+on:
+  push:
+
+jobs:
+
+  run_tests:
+    name: "Run Rails unit tests"
+    runs-on: ubuntu-22.04
+
+    env:
+      RAILS_ENV: test
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.1.2
+
+      - name: Setup rails bundle cache
+        uses: actions/cache@v2
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gems-
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update && sudo apt-get -yqq install libpq-dev build-essential libcurl4-openssl-dev
+          gem install bundler
+          bundle config path vendor/bundle
+
+      - name: Run tests
+        env:
+          RAILS_ENV: ${{ env.RAILS_ENV }}
+        run: |
+          COVERAGE=true bundle exec rspec --require rails_helper
