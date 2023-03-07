@@ -36,7 +36,7 @@ APP_API_TOKEN # an api token to authenticate with the web service. It will be re
 bundle exec rspec
 ```
 
-## Deployment instructions
+## Production
 Set the following environment variables
 ```shell
 SLACK_API_TOKEN # the bot token of your slack app, ex: xoxb-... 
