@@ -11,6 +11,9 @@ jobs:
 
     env:
       RAILS_ENV: test
+      SLACK_API_TOKEN: ${{ secrets.SLACK_API_TOKEN }}
+      SLACK_CHANNEL: ${{ secrets.SLACK_CHANNEL }}
+      APP_API_TOKEN: ${{ secrets.APP_API_TOKEN }}
 
     steps:
       - uses: actions/checkout@v2

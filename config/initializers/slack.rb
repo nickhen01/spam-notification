@@ -1,3 +1,3 @@
 Slack.configure do |config|
-  config.token = Rails.application.credentials[Rails.env.to_sym].dig(:slack_api_token)
+  config.token = ENV['SLACK_API_TOKEN']
 end
