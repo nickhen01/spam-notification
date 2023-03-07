@@ -11,6 +11,7 @@ jobs:
 
     env:
       RAILS_ENV: test
+      RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
 
     steps:
       - uses: actions/checkout@v2
@@ -33,9 +34,10 @@ jobs:
           sudo apt-get update && sudo apt-get -yqq install libpq-dev build-essential libcurl4-openssl-dev
           gem install bundler
           bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
 
       - name: Run tests
         env:
           RAILS_ENV: ${{ env.RAILS_ENV }}
         run: |
-          COVERAGE=true bundle exec rspec --require rails_helper
+          bundle exec rspec --require rails_helper
