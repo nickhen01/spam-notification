@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe "/api/v1/bounce_reports", type: :request do
+
   let(:headers) {
-    { "Content-Type" => "application/json", "Authorization" => "Bearer #{Rails.application.credentials[Rails.env.to_sym].dig(:app_api_token)}" }
+    { "Content-Type" => "application/json", "Authorization" => "Bearer #{ENV['APP_API_TOKEN']}" }
   }
 
   before do
