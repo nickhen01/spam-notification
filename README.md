@@ -28,7 +28,7 @@ Add the following environment variables:
 ```shell
 SLACK_API_TOKEN # the token of your slack app, ex: xoxb-... 
 SLACK_CHANNEL # the name of the channel the message will be sent to, ex: #general
-APP_API_TOKEN # your api token to authenticate with the web service
+APP_API_TOKEN # an api token to authenticate with the web service. It will be required as a bearer token to post requests the web service.
 ```
 
 ### How to run the test suite
@@ -40,8 +40,8 @@ bundle exec rspec
 Set the following environment variables
 ```shell
 SLACK_API_TOKEN # the bot token of your slack app, ex: xoxb-... 
-SLACK_CHANNEL # the name of the channel to send the message to ex: #general
-APP_API_TOKEN # your api token to authenticate with the web service. It will be required as a bearer token to post requests the web service.
+SLACK_CHANNEL # the name of the channel to send the message to, ex: #general
+APP_API_TOKEN # an api token to authenticate with the web service. It will be required as a bearer token to post requests the web service.
 RAILS_MASTER_KEY # required if not automatically generated upon deployment
 ```
 
