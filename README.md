@@ -46,6 +46,9 @@ RAILS_MASTER_KEY # required if not automatically generated upon deployment
 ```
 
 ## How to send requests
+
+An alert will be sent to the Slack channel when the payload includes the Type `"SpamNotification"`.
+
 Example:
 ```shell
 curl --location --request POST '<base_url>/api/v1/bounce_reports' \
@@ -64,3 +67,5 @@ curl --location --request POST '<base_url>/api/v1/bounce_reports' \
 "BouncedAt": "2023-02-27T21:41:30Z"
 }'
 ```
+
+
