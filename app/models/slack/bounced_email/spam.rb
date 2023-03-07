@@ -23,7 +23,7 @@ module Slack
       end
 
       def channel
-        Rails.application.credentials[Rails.env.to_sym].dig(:slack_channel)
+        ENV['SLACK_CHANNEL']
       end
 
       def text

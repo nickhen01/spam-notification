@@ -13,7 +13,7 @@ RSpec.describe "/api/v1", type: :request do
 
   context "when the request provides a valid api token" do
     it "allows the request to pass" do
-      headers = { "Content-Type" => "application/json", "Authorization" => "Bearer #{Rails.application.credentials[Rails.env.to_sym].dig(:app_api_token)}" }
+      headers = { "Content-Type" => "application/json", "Authorization" => "Bearer #{ENV['APP_API_TOKEN']}" }
 
       get "/api/test", headers: headers
 
